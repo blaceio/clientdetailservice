@@ -5,6 +5,7 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -31,7 +32,7 @@ public class ClientDetailRestController {
     @GetMapping("/getclients")
     public ResponseEntity<List<Client>> getAllClients() {
     	logger.info("getclients request received.");
-        return new ResponseEntity<List<Client>>(clientRepository.findAllOrderByName(), new HttpHeaders(), HttpStatus.OK);
+        return new ResponseEntity<List<Client>>(clientRepository.findAll(new Sort(Sort.Direction.ASC, "name")), new HttpHeaders(), HttpStatus.OK);
     }
     
     @GetMapping("/getclient/{clientname}")
