@@ -16,7 +16,7 @@
 
 	<properties>
 		<java.version>1.8</java.version>
-		<start-class>com.blaCe.microservices.clientdetailservice.Application</start-class>
+		<start-class>com.blace.microservices.clientdetailservice.Application</start-class>
 		<version.number>${git.commit.time}.${git.commit.id.abbrev}</version.number>
 		<docker.repository.name>blace/${project.artifactId}</docker.repository.name>
 	</properties>
