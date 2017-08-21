@@ -22,6 +22,7 @@ public class ClientDetailRestController {
     @Autowired
     private ClientRepository clientRepository;
 
+    @CrossOrigin
     @PostMapping("/saveclientdetail")
     public ResponseEntity<String> saveClientDetail(@RequestBody Client clientdetail) {
     	logger.info("saveclientdetail request received: " + clientdetail);
@@ -29,12 +30,14 @@ public class ClientDetailRestController {
         return new ResponseEntity<String>("Client Saved.", new HttpHeaders(), HttpStatus.OK);
     }
     
+    @CrossOrigin
     @GetMapping("/getclients")
     public ResponseEntity<List<Client>> getAllClients() {
     	logger.info("getclients request received.");
         return new ResponseEntity<List<Client>>(clientRepository.findAll(new Sort(Sort.Direction.ASC, "name")), new HttpHeaders(), HttpStatus.OK);
     }
     
+    @CrossOrigin
     @GetMapping("/getclient/{clientname}")
     public ResponseEntity<Client> getClient(@PathVariable String clientname) {
     	logger.info("getclient request received: " + clientname);
