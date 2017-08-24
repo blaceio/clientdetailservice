@@ -3,21 +3,16 @@ package io.blace.microservices.clientdetailservice.mongo;
 import java.util.List;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
 
 public class Client {
     
 	@Id
-    public String id;
-    
+	@Indexed(unique = true)
 	private String name;
+	
 	private List<Trader> traders;
 	
-	public String getId() {
-		return id;
-	}
-	public void setId(String id) {
-		this.id = id;
-	}
 	public String getName() {
 		return name;
 	}
@@ -33,6 +28,6 @@ public class Client {
 	
 	@Override
 	public String toString() {
-		return "Client [id=" + id + ", name=" + name + ", traders=" + traders + "]";
+		return "Client [name=" + name + ", traders=" + traders + "]";
 	}
 }
